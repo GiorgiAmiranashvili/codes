@@ -1,0 +1,110 @@
+------------------
+Reversing String
+------------------
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int i;
+string s;
+main () {
+cin>>s;
+for (i=s.size()-1; i>=0; i--){
+    cout<<s[i];
+ }
+}
+
+
+-----------------------------
+Reversing String (Recursion)
+-----------------------------
+
+#include <bits/stdc++.h>
+using namespace std;
+int i;
+string s;
+int recursion (int k){
+    if (k != s.size()-1)
+    recursion (k+1);
+    cout<<s[k];
+}
+main () {
+cin>>s;
+recursion (0);
+}
+
+
+--------------------------------------
+Removing Duplicates (Adjacent, Stack)
+--------------------------------------
+
+#include <bits/stdc++.h>
+using namespace std;
+int i,n;
+string s;
+char k[1000];
+stack <char> st;
+main () {
+cin>>s;
+for (i=0; i<s.size(); i++) {
+    if (st.size()==0) {st.push(s[i]); continue;}
+    if (s[i]==st.top()) continue;
+    else st.push(s[i]);
+}
+n=st.size();
+for (i=0; i<n; i++) {
+    k[i]=st.top();
+    st.pop();
+}
+for (i=n-1; i>=0; i--) {
+    cout<<k[i];
+}
+}
+
+
+--------------------------
+Removing Duplicates (Map)
+--------------------------
+
+#include <bits/stdc++.h>
+using namespace std;
+int i;
+string s;
+set <char> st;
+set <char>:: iterator it;
+main () {
+cin>>s;
+for (i=0; i<s.size(); i++) {
+  st.insert(s[i]);
+}
+for (it=st.begin(); it!=st.end(); it++) {
+   cout<<*it;
+}
+
+}
+
+----------------------------------
+Getting Largest Number (Recursion)
+----------------------------------
+
+#include <bits/stdc++.h>
+using namespace std;
+int i,j,k,s,a,d[1000];
+
+int largestnumber (int n, int i) {
+
+  if (n == s-1 || n+i > s-1) {
+     cout<<d[n];
+  }
+  if (n+i <= s-1 && d[n]<=d[n+i]) {largestnumber(n+i, i);}
+  if (n+i <= s-1 && d[n]>d[n+i])  {largestnumber(n, i+1);}
+
+}
+main () {
+cin>>s;
+for (j=0; j<s; j++) {
+    cin>>d[j];
+}
+largestnumber (0,1);
+}
+
